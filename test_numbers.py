@@ -1,6 +1,6 @@
 import unittest
 
-from is_number import isFinite, isInteger, isNumber
+from the_number import isFinite, isInteger, isNumber
 
 
 class TestIsNumber(unittest.TestCase):
