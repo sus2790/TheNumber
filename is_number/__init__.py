@@ -10,7 +10,7 @@ def isFinite(obj: complex) -> bool:
         return False
     if isinstance(obj, complex):
         return isFinite(obj.real) and isFinite(obj.imag)
-    return obj != float("nan") and obj != float("inf") and obj != float("-inf")
+    return obj == obj and obj != float("inf") and obj != float("-inf")
 
 
 def isNumber(obj: complex) -> bool:
