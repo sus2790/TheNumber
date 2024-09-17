@@ -98,7 +98,7 @@ print(isNumber(float('nan')))  # False
 To run the tests, execute the following command in the project directory:
 
 ```bash
-python -m unittest test_numbers.py
+python -m unittest discover
 ```
 
 ## Contributing
