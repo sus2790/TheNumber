@@ -1,58 +1,105 @@
-# The Number
+# The number checker
 
-This library provides a set of pure Python functions for checking and validating numeric types, including complex numbers. It's designed to work without any external dependencies, making it easy to integrate into any Python project.
-I have used LLM for this entire README.md.
+This project provides a set of Python functions for checking various properties of numbers, including integers, floats, and complex numbers. These functions can be useful for validating input, handling edge cases, and working with different number types in your Python projects.
 
-## Features
+## Table of Contents
 
-- Check if a value is a numeric type (integer, float, or complex)
-- Determine if a number is finite
-- Validate if a value is a "number" (finite numeric type)
-- Supports both real and complex numbers
-- Pure Python implementation (no external dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Functions](#functions)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Functions
+## Installation
 
-### `isInteger(obj: complex) -> bool`
-
-Checks if the input is a numeric type (int, float, or complex).
-
-### `isFinite(obj: complex) -> bool`
-
-Determines if the input is a finite number. For complex numbers, both real and imaginary parts must be finite.
-
-### `isNumber(obj: complex) -> bool`
-
-Checks if the input is a finite numeric type.
+```bash
+pip install the_number
+```
 
 ## Usage
 
+Import the functions you need in your Python script:
+
 ```python
-from the_number import isInteger, isFinite, isNumber
+from the_number import isInteger, isInf, isNaN, isFinite, isNumber
 
-# Examples
-print(isInteger(5))        # True
-print(isInteger(3.14))     # True
-print(isInteger(2+3j))     # True
-print(isInteger("5"))      # False
-
-print(isFinite(10))        # True
-print(isFinite(float('inf')))  # False
-print(isFinite(1+2j))      # True
-print(isFinite(1+float('inf')*1j))  # False
-
-print(isNumber(42))        # True
-print(isNumber(3.14159))   # True
-print(isNumber(2+3j))      # True
+# Example usage
+print(isNumber(5))  # True
+print(isNumber(3.14))  # True
+print(isNumber(1 + 2j))  # True
+print(isNumber(float('inf')))  # True
 print(isNumber(float('nan')))  # False
 ```
 
-## Installation
-```shell
->>> pip install the_number
->>> ...
+## Functions
+
+### isInteger(obj: complex | float | int) -> bool
+
+Checks if the object is an integer, float, or complex number.
+
+Example:
+```python
+print(isInteger(5))  # True
+print(isInteger(3.14))  # True
+print(isInteger(1 + 2j))  # True
+print(isInteger("5"))  # False
 ```
-That's all.
+
+### isInf(obj: complex | float | int) -> bool
+
+Checks if the object is positive or negative infinity.
+
+Example:
+```python
+print(isInf(float('inf')))  # True
+print(isInf(float('-inf')))  # True
+print(isInf(5))  # False
+```
+
+### isNaN(obj: complex | float | int) -> bool
+
+Checks if the object is NaN (Not a Number).
+
+Example:
+```python
+print(isNaN(float('nan')))  # True
+print(isNaN(5))  # False
+```
+
+### isFinite(obj: complex | float | int) -> bool
+
+Checks if the object is a finite number.
+
+Example:
+```python
+print(isFinite(5))  # True
+print(isFinite(3.14))  # True
+print(isFinite(1 + 2j))  # True
+print(isFinite(float('inf')))  # False
+print(isFinite(float('nan')))  # False
+```
+
+### isNumber(obj: complex | float | int) -> bool
+
+Checks if the object is a valid number (integer, float, or complex) and not NaN.
+
+Example:
+```python
+print(isNumber(5))  # True
+print(isNumber(3.14))  # True
+print(isNumber(1 + 2j))  # True
+print(isNumber(float('inf')))  # True
+print(isNumber(float('nan')))  # False
+```
+
+## Testing
+
+To run the tests, execute the following command in the project directory:
+
+```bash
+python -m unittest test_numbers.py
+```
 
 ## Contributing
 
@@ -60,4 +107,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - See the [LICENSE](LICENSE) file for details.

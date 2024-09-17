@@ -1,11 +1,13 @@
+from pathlib import Path
+
 from setuptools import find_packages, setup
 
-with open("README.md", encoding="utf-8") as fh:
-    long_description = fh.read()
+with Path("README.md").open(encoding="utf-8") as f:
+    long_description: str = f.read()
 
 setup(
     name="the_number",
-    version="0.1.0",
+    version="0.1.1",
     author="sus2790",
     author_email="ddoaoing@gmail.com",
     description="A pure Python library for numeric type checking and validation",
